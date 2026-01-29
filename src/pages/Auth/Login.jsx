@@ -49,7 +49,8 @@ export default function Login() {
 
           {/* SOCIAL LOGIN */}
           <div className="grid grid-cols-2 gap-4">
-            <button className="border rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+            <button onClick={() => navigate("/signup")}
+            className="border rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
                 alt="Google"
@@ -58,7 +59,8 @@ export default function Login() {
               Google
             </button>
 
-            <button className="border rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+            <button onClick={() => navigate("/signup")}
+            className="border rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
               <img
                 src="https://www.svgrepo.com/show/511330/apple-173.svg"
                 alt="Apple"
