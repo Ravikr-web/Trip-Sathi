@@ -1,15 +1,21 @@
-import { ArrowLeft, Eye } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function EmailLogin() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#eef7f4] to-[#faf8f2] flex items-center justify-center px-4">
       <div className="w-full max-w-lg">
 
         {/* BACK */}
-        <button onClick={() => navigate("/")} className="flex items-center gap-2 text-gray-600 mb-10">
-          <ArrowLeft onClick={() => navigate("/")} size={20} />
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 text-gray-600 mb-10"
+        >
+          <ArrowLeft size={20} />
           Back
         </button>
 
@@ -51,19 +57,30 @@ export default function EmailLogin() {
 
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 className="w-full px-5 py-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4FA389] bg-[#fffaf6]"
               />
-              <Eye
-                size={20}
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
-              />
+
+              {showPassword ? (
+                <EyeOff
+                  size={20}
+                  onClick={() => setShowPassword(false)}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+                />
+              ) : (
+                <Eye
+                  size={20}
+                  onClick={() => setShowPassword(true)}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+                />
+              )}
             </div>
           </div>
 
           {/* SIGN IN BUTTON */}
-          <button className="w-full bg-[#4FA389] text-white py-4 rounded-full text-lg font-medium hover:opacity-90 transition mt-6">
+          <button onClick={() => navigate("/home")}
+ className="w-full bg-[#4FA389] text-white py-4 rounded-full text-lg font-medium hover:opacity-90 transition mt-6">
             Sign In
           </button>
         </div>
@@ -71,7 +88,10 @@ export default function EmailLogin() {
         {/* FOOTER */}
         <p className="text-center text-gray-600 mt-8">
           Don&apos;t have an account?{" "}
-          <span onClick={() => navigate("/signup")} className="text-[#4FA389] font-medium cursor-pointer">
+          <span
+            onClick={() => navigate("/signup")}
+            className="text-[#4FA389] font-medium cursor-pointer"
+          >
             Create one
           </span>
         </p>

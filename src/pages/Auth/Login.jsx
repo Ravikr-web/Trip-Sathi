@@ -75,7 +75,6 @@ export default function Login() {
               Create an account
             </span>
           </p>
-
           <p className="text-center text-xs text-gray-400 mt-2">
             We plan trips — we don't spam.
           </p>
